@@ -21,6 +21,7 @@ RUN crudini --set /etc/php-fpm.d/www.conf www chdir "/opt/bolt"
 RUN crudini --del /etc/php-fpm.d/www.conf www listen.allowed_client
 RUN crudini --set --existing /etc/php-fpm.d/www.conf www user nginx
 RUN crudini --set --existing /etc/php-fpm.d/www.conf www group nginx
+RUN crudini --set --existing /etc/php.ini PHP upload_max_filesize 1G
 RUN yum remove -y crudini
 RUN yum clean all
 RUN systemctl enable nginx
